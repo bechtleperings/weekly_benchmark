@@ -1,1 +1,1 @@
-## [current Skills-Validation Page](skills_validation.md)
+## [current Skills-Validation page](skills_validation.md)
