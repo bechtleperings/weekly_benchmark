@@ -1,6 +1,6 @@
-site_name: Entity Annotation Framework
+site_name: Weekly benchmark
 extra_css: 
-   - assets/stylesheets/extra.css
+   - extra.css
 
 theme: 
   name: material
