@@ -34,8 +34,8 @@ extra:
 
 nav: 
     - "Home": "index.md"
-    - "test": "imkdocs.yml"
-    - "back": "index.md"
+    - "test": "skills_validation.md"
+    - "back": "test.txt"
      
   
 
