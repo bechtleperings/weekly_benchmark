@@ -33,7 +33,9 @@ extra:
       link: https://bechtleperings.github.io/weekly_benchmark/
 
 nav: 
-    - "Home": "index.html"
+    - "Home": "index.md"
+       - "test": "imkdocs.yml"
+    - "back": "index.md"
      
   
 
