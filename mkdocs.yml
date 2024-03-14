@@ -3,8 +3,8 @@ extra_css:
    - extra.css
 
 theme: 
-   name: material
-   custom_dir: overrides
+  name: material
+  custom_dir: overrides
    
   palette: 
     # Palette toggle for light mode
