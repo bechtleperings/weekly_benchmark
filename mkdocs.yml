@@ -34,7 +34,7 @@ extra:
 
 nav: 
     - "Home": "index.html"
-      - "confusion graph": "14-03-2024-Benchmark-0/confusion_results.png"
+     
   
 
 markdown_extensions:
