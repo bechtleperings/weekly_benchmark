@@ -3,15 +3,27 @@ name: MkDocs Deploy
 on:
   push:
     branches:
-      - master
+      - Results
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Move into docs folder
+        run: cd docs
+
+      - name: Delete files and subfolders in docs folder
+        run: rm -rf ./*
+
+      - name: Pull Results branch
+        run: git pull origin Results
+
+      - name: Move back to original directory
+        run: cd ..
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -21,7 +33,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install mkdocs mkdocs-material mkdocs-rtd-dropdown mkdocs-git-revision-date-plugin mkdocs-git-revision-date-localized-plugin mkdocs-yamp mkdocs-markdownextradata-plugin Pygments
-
+      
+      - script:
+      
       - name: Build and deploy
         run: |
           mkdocs gh-deploy --force
