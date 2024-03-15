@@ -19,7 +19,16 @@ jobs:
 
       - name: Delete files and subfolders in docs folder
         run: rm -rf ./*
+        
+      - name: create new repo
+        run: git remote add origin git@github.com:bechtleperings/weekly_benchmark.git
+        
+      - name: fetch repo
+        run: git fetch origin
 
+      - name: checkout Results branch
+        run: git checkout -b Results origin/Results
+        
       - name: Pull Results branch
         run: git pull origin Results
 
