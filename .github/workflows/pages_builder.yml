@@ -15,9 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: define rule for pull task
-        run: git config pull.rebase true
+        with:
+          ref: master
 
       - name: define git email
         run: git config --global user.email "julian.perings@bechtle.com"
@@ -27,10 +26,9 @@ jobs:
         
       - name: Pull Results branch
         run: |
-          cd docs
-          pwd && \
-          ls && \
-          git pull origin Results && \
+          cd docs && \
+          git pull origin Results
+          pwd
           ls
 
       - name: check directories
