@@ -63,7 +63,9 @@ jobs:
 
       - name: execute visualisation programms
         run: |
-          cd visualisation_script
+          ls
+          cd visualisation_scripts
+          ls
           jupyter nbconvert --to notebook --execute visualisation_automated.ipynb
           
       - name: Build and deploy
