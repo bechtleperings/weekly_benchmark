@@ -19,6 +19,12 @@ jobs:
 
       - name: Move into docs folder
         run: cd docs
+
+      - name: define git email
+        run: git config --global user.email "julian.perings@bechtle.com"
+
+      - name: define git name
+        run: git config --global user.name "bechtleperings"
         
       - name: Pull Results branch
         run: git pull origin Results
