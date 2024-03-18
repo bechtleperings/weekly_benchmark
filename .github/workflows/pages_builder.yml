@@ -17,6 +17,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: master
+          
+      - name: define rule for pull task
+        run: git config pull.rebase true
 
       - name: define git email
         run: git config --global user.email "julian.perings@bechtle.com"
@@ -26,8 +29,7 @@ jobs:
         
       - name: Pull Results branch
         run: |
-          cd docs && \
-          git pull origin Results
+          cd docs && git pull origin Results 
           pwd
           ls
 
