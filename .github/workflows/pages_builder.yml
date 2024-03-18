@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout master repository
         uses: actions/checkout@v2
         with:
           ref: master
@@ -26,10 +26,15 @@ jobs:
 
       - name: define git name
         run: git config --global user.name "bechtleperings"
-      
+
+      - name: Checkout  Results repository
+        uses: actions/checkout@v2
+        with:
+          ref: Results
+          
       - name: checkout Results and alter them for merge
         run: |
-          git checkout Results
+          git branch
           ls
           mkdir docs && rsync -av --exclude='docs' ./ docs/
           git add .
@@ -38,10 +43,15 @@ jobs:
           cd docs
           ls
           cd ..
-          git checkout origin master
+
+      - name: Checkout master repository
+        uses: actions/checkout@v2
+        with:
+          ref: master
 
       - name: merge Results branch
         run: |
+          git branch
           ls
           git merge Results 
           ls
