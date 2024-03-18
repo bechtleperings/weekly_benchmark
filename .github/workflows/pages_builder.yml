@@ -3,8 +3,10 @@ name: MkDocs Deploy
 on:
   push:
     branches:
-      - master
       - Results
+      - origin/Results
+      - master
+      
 
 jobs:
   deploy:
@@ -29,6 +31,9 @@ jobs:
       - name: Pull Results branch
         run: git pull origin Results
 
+      - name: print where I am
+        run: pwd
+        
       - name: verify pull
         run: ls
 
