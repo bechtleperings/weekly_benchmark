@@ -36,11 +36,14 @@ jobs:
         run: |
           git branch
           ls
-          mkdir docs && rsync -av --exclude='docs' ./ docs/
+          pwd
+          mkdir docs && find . -maxdepth 1 -type f -o -type d -exec rsync -av --exclude='.git' {} docs/ \
           git add .
           git commit -am "everything into docs"
+          pwd
           ls
           cd docs
+          pwd
           ls
           cd ..
 
