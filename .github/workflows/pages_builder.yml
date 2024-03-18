@@ -37,7 +37,9 @@ jobs:
           git branch
           ls
           pwd
-          mkdir docs && find . -maxdepth 1 -type f -o -type d -exec rsync -av --exclude='.git' {} docs/ \;
+          mkdir -p docs && \
+          find . -maxdepth 1 -type f ! -name '.*' ! -name 'docs*' -exec rsync -av {} docs/ \; && \
+          find . -maxdepth 1 -type f ! -name '.*' ! -name 'docs*' -exec rm {} +
           git add .
           git commit -am "everything into docs"
           pwd
@@ -46,18 +48,11 @@ jobs:
           pwd
           ls
           cd ..
-
-      - name: Checkout master repository
-        uses: actions/checkout@v2
-        with:
-          ref: master
-
-      - name: merge Results branch
-        run: |
-          git branch
+          git checkout origin master
+          git merge Results
+          pwd 
           ls
-          git merge Results 
-          ls
+
 
       - name: check directories
         run: |
