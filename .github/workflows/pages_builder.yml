@@ -31,6 +31,12 @@ jobs:
           pwd
           ls
           git pull origin Results
+
+      - name: check directories
+        run: |
+          ls
+          cd docs
+          pwd
           ls
 
       - name: Set up Python
