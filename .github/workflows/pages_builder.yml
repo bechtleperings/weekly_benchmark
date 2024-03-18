@@ -37,7 +37,7 @@ jobs:
           git branch
           ls
           pwd
-          mkdir docs && find . -maxdepth 1 -type f -o -type d -exec rsync -av --exclude='.git' {} docs/ \
+          mkdir docs && find . -maxdepth 1 -type f -o -type d -exec rsync -av --exclude='.git' {} docs/ \;
           git add .
           git commit -am "everything into docs"
           pwd
