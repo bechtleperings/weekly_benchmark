@@ -19,9 +19,6 @@ jobs:
 
       - name: Move into docs folder
         run: cd docs
-
-      - name: Delete files and subfolders in docs folder
-        run: rm -rf ./*
         
       - name: Pull Results branch
         run: git pull origin Results
