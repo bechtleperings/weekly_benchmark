@@ -49,7 +49,7 @@ jobs:
           cd ..
           git status
           git branch -r
-          git merge origin/master
+          git merge origin/master --allow-unrelated-histories
           pwd 
           ls
 
