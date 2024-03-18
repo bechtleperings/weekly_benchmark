@@ -37,9 +37,8 @@ jobs:
           git branch
           ls
           pwd
-          mkdir -p docs && \
-          find . -maxdepth 1 -type f ! -name '.*' ! -name 'docs*' -exec rsync -av {} docs/ \; && \
-          find . -maxdepth 1 -type f ! -name '.*' ! -name 'docs*' -exec rm {} +
+          mkdir -p docs && find . -maxdepth 1 -type f ! -path './.git/*' -exec mv {} docs/ \; -exec rm {} \;
+          rmdir docs/docs
           git add .
           git commit -am "everything into docs"
           pwd
@@ -48,7 +47,7 @@ jobs:
           pwd
           ls
           cd ..
-          git checkout origin master
+          git checkout master
           git merge Results
           pwd 
           ls
