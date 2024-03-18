@@ -18,9 +18,12 @@ jobs:
 
       - name: define rule for pull task
         run: git config pull.rebase true
-
+        
+      - name: verify pull
+        run: ls  
+        
       - name: Move into docs folder
-        run: cd docs
+        run: cd docs/
         
       - name: print where I am
         run: pwd
