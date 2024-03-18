@@ -18,16 +18,7 @@ jobs:
 
       - name: define rule for pull task
         run: git config pull.rebase true
-        
-      - name: verify pull
-        run: ls  
-        
-      - name: Move into docs folder
-        run: cd docs/
-        
-      - name: print where I am
-        run: pwd
-        
+
       - name: define git email
         run: git config --global user.email "julian.perings@bechtle.com"
 
@@ -35,16 +26,12 @@ jobs:
         run: git config --global user.name "bechtleperings"
         
       - name: Pull Results branch
-        run: git pull origin Results
-
-      - name: print where I am
-        run: pwd
-        
-      - name: verify pull
-        run: ls
-
-      - name: Move back to original directory
-        run: cd ..
+        run: |
+          cd docs
+          pwd
+          ls
+          git pull origin Results
+          ls
 
       - name: Set up Python
         uses: actions/setup-python@v2
