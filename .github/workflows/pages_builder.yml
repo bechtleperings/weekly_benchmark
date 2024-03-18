@@ -28,9 +28,10 @@ jobs:
       - name: Pull Results branch
         run: |
           cd docs
-          pwd
+          pwd && \
+          ls && \
+          git pull origin Results && \
           ls
-          git pull origin Results
 
       - name: check directories
         run: |
