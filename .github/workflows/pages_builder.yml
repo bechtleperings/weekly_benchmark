@@ -1,0 +1,73 @@
+name: MkDocs Deploy
+
+on:
+  push:
+    branches:
+      - Results
+      - origin/Results
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout master repository
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          
+      - name: define rule for pull task
+        run: git config pull.rebase true
+
+      - name: define git email
+        run: git config --global user.email "julian.perings@bechtle.com"
+
+      - name: define git name
+        run: git config --global user.name "bechtleperings"
+
+      - name: Checkout  Results repository
+        uses: actions/checkout@v2
+        with:
+          ref: Results
+          
+      - name: checkout Results and alter them for merge
+        run: |
+          git branch
+          ls
+          pwd
+          mkdir docs && find . -maxdepth 1 -not -name 'docs' -not -name '.git*' -exec mv {} docs/ \;
+          ls
+          git add .
+          git commit -am "everything into docs"
+          pwd
+          ls
+          cd docs
+          pwd
+          ls
+          cd ..
+          git status
+          git branch -r
+          git merge origin/master --allow-unrelated-histories
+          pwd 
+          ls
+
+
+      - name: check directories
+        run: |
+          cd docs
+          pwd
+          ls
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install mkdocs mkdocs-material mkdocs-rtd-dropdown mkdocs-git-revision-date-plugin mkdocs-git-revision-date-localized-plugin mkdocs-yamp mkdocs-markdownextradata-plugin Pygments
+      
+      - name: Build and deploy
+        run: |
+          mkdocs gh-deploy --force
