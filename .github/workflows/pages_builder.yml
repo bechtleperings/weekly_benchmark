@@ -21,7 +21,10 @@ jobs:
 
       - name: Move into docs folder
         run: cd docs
-
+        
+      - name: print where I am
+        run: pwd
+        
       - name: define git email
         run: git config --global user.email "julian.perings@bechtle.com"
 
