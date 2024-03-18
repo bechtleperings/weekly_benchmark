@@ -6,7 +6,6 @@ on:
       - Results
       - origin/Results
       - master
-      
 
 jobs:
   deploy:
