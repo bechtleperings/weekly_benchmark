@@ -26,16 +26,28 @@ jobs:
 
       - name: define git name
         run: git config --global user.name "bechtleperings"
-        
-      - name: Pull Results branch
+      
+      - name: checkout Results and alter them for merge
         run: |
-          cd docs && git pull origin Results 
-          pwd
+          checkout Results
+          ls
+          mkdir docs && rsync -av --exclude='docs' ./ docs/
+          git add .
+          git commit -am "everything into docs"
+          ls
+          cd docs
+          ls
+          cd ..
+          git checkout origin master
+
+      - name: merge Results branch
+        run: |
+          ls
+          git merge Results 
           ls
 
       - name: check directories
         run: |
-          ls
           cd docs
           pwd
           ls
