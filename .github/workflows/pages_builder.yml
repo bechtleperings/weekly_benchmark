@@ -47,8 +47,7 @@ jobs:
           pwd
           ls
           cd ..
-          git checkout master
-          git merge Results
+          git merge origin/master
           pwd 
           ls
 
