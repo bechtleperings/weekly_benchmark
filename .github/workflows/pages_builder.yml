@@ -29,7 +29,7 @@ jobs:
       
       - name: checkout Results and alter them for merge
         run: |
-          checkout Results
+          git checkout Results
           ls
           mkdir docs && rsync -av --exclude='docs' ./ docs/
           git add .
