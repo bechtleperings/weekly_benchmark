@@ -37,8 +37,8 @@ jobs:
           git branch
           ls
           pwd
-          mkdir -p docs && find . -maxdepth 1 -type f ! -path './.git/*' -exec mv {} docs/ \; -exec rm {} \;
-          rmdir docs/docs
+          mkdir docs && find . -maxdepth 1 -not -name 'docs' -not -name '.git*' -exec mv {} docs/ \;
+          ls
           git add .
           git commit -am "everything into docs"
           pwd
