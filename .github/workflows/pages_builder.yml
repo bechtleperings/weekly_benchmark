@@ -52,13 +52,6 @@ jobs:
           pwd 
           ls
 
-
-      - name: check directories
-        run: |
-          cd docs
-          pwd
-          ls
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -66,8 +59,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install mkdocs mkdocs-material mkdocs-rtd-dropdown mkdocs-git-revision-date-plugin mkdocs-git-revision-date-localized-plugin mkdocs-yamp mkdocs-markdownextradata-plugin Pygments
-      
+          pip install mkdocs mkdocs-material mkdocs-rtd-dropdown mkdocs-git-revision-date-plugin mkdocs-git-revision-date-localized-plugin mkdocs-yamp mkdocs-markdownextradata-plugin Pygments jupyter
+
+      - name: execute visualisation programms
+        run: |
+          cd visualisation_script
+          jupyter nbconvert --to notebook --execute visualisation_automated.ipynb
+          
       - name: Build and deploy
         run: |
           mkdocs gh-deploy --force
