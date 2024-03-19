@@ -60,7 +60,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          
+
       - name: execute visualisation programms
         run: |
           ls
