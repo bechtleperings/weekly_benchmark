@@ -61,12 +61,23 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: execute visualisation programms
+      - name: Run Python files
         run: |
-          ls
           cd visualisation_scripts
-          ls
-          jupyter nbconvert --to notebook --execute visualisation_automated.ipynb
+          if compgen -G '*.py' >/dev/null; then
+            python *.py
+          else
+            echo "No Python files found in directory"
+          fi
+  
+      - name: Run Jupyter notebooks
+        run: |
+          cd visualisation_scripts
+          if compgen -G '*.ipynb' >/dev/null; then
+            jupyter nbconvert --to notebook --execute *.ipynb
+          else
+            echo "No Jupyter notebooks found in directory"
+          fi
           
       - name: Build and deploy
         run: |
